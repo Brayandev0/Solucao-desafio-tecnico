@@ -201,7 +201,7 @@ Formulário de autenticação do usuário.
 ![alt text](image-4.png)
 
 - Validação dos campos no front-end antes de enviar ao back-end
-- Token armazenado via cookie `httpOnly` através de uma função `use server`, eliminando vulnerabilidades XSS
+- Token armazenado via cookie `httpOnly` através de uma função `use server`, eliminando vulnerabilidades de roubo de token por XSS
 - Middleware redireciona usuários já autenticados para `/`
 
 ---
