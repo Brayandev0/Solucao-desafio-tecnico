@@ -21,16 +21,15 @@ Aplicação full-stack de e-commerce desenvolvida como solução para o desafio 
 - [Tecnologias utilizadas](#-tecnologias-utilizadas)
 - [Banco de dados](#-banco-de-dados)
 - [Decisões técnicas](#-decisões-técnicas)
-
 - [Front-End](#-front-end)
-  - [`/` — Página inicial](#---página-inicial)
-  - [`/produtos` — Listagem de produtos](#produtos---listagem-de-produtos)
-  - [`/produtos/{nome}/{id}` — Detalhes do produto](#produtosnomeid---detalhes-do-produto)
-  - [`/login` — Login](#login---login)
-  - [`/registro` — Cadastro](#registro---cadastro)
-  - [`/conta/perfil` — Perfil do usuário](#contaperfil---perfil-do-usuário)
-  - [`/conta/pedido/{uuid}` — Detalhes do pedido](#contapedidouuid---detalhes-do-pedido)
-  - [`/checkout` — Carrinho e finalização de compra](#checkout---carrinho-e-finalização-de-compra)
+  - [`/` — Página inicial](#--página-inicial)
+  - [`/produtos` — Listagem de produtos](#produtos--listagem-de-produtos)
+  - [`/produtos/{nome}/{id}` — Detalhes do produto](#produtosnomeid--detalhes-do-produto)
+  - [`/login` — Login](#login--login)
+  - [`/registro` — Cadastro](#registro--cadastro)
+  - [`/conta/perfil` — Perfil do usuário](#contaperfil--perfil-do-usuário)
+  - [`/conta/pedido/{uuid}` — Detalhes do pedido](#contapedidouuid--detalhes-do-pedido)
+  - [`/checkout` — Carrinho e finalização de compra](#checkout--carrinho-e-finalização-de-compra)
 - [Back-End](#-back-end)
   - [`GET /products`](#get-products)
   - [`GET /products/:id`](#get-productsid)
@@ -39,6 +38,7 @@ Aplicação full-stack de e-commerce desenvolvida como solução para o desafio 
   - [`GET /users/`](#get-users)
   - [`GET /users/orders/:uuid`](#get-usersordersuuid)
 
+---
 ---
 
 ## 📖 Introdução
