@@ -131,7 +131,8 @@ As stacks padrão da empresa são React e Angular, mas optei pelo Next.js pelos 
 
 - Paginação na listagem de produtos (ex: 20 por página)
 - Integração completa da busca e dos filtros com o back-end (atualmente os filtros são aplicados no front-end com os dados já carregados)
-
+- Integração do back-end com NestJS para melhor organização e padronização do código
+- Maior validação no middleware por parte do Next.js (validação de URLs, IDs, UUIDs e demais parâmetros de entrada)
 ---
 
 ## 🖥 Front-End
