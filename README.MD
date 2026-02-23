@@ -192,7 +192,7 @@ Página individual de um produto.
 
 ![alt text](image-3.png)
 
-Caso o produto nao seja encontrado ele retorna, evitando erros
+"Caso o produto não seja encontrado, ele retorna :
 ![alt text](image-11.png)
 ---
 
@@ -239,6 +239,8 @@ Exibe todos os itens de um pedido específico, incluindo nome, imagem e valor un
 - UUIDs utilizados no lugar de IDs sequenciais para reduzir a previsibilidade e dificultar ataques de enumeração
 - Renderização pelo servidor (SSR)
 
+Caso não encontre, retorna :
+![alt text](image-12.png)
 ---
 
 #### `/checkout` — Carrinho e finalização de compra
