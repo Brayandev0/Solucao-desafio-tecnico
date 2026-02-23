@@ -112,8 +112,7 @@ Foram criadas **3 tabelas** com seus respectivos relacionamentos definidos via S
 
 > O diagrama do banco de dados pode ser visualizado abaixo:
 
-
-![alt text](Captura de tela de 2026-02-22 22-54-59.png)
+![alt text](<Captura de tela de 2026-02-22 22-54-59.png>)
 
 ---
 
