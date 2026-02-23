@@ -36,9 +36,9 @@ Aplicação full-stack de e-commerce desenvolvida como solução para o desafio 
   - [`POST /auth/login`](#post-authlogin)
   - [`POST /auth/register`](#post-authregister)
   - [`GET /users/`](#get-users)
+  - [`POST /users/orders`](#post-usersorders)
   - [`GET /users/orders/:uuid`](#get-usersordersuuid)
 
----
 ---
 
 ## 📖 Introdução
@@ -112,7 +112,8 @@ Foram criadas **3 tabelas** com seus respectivos relacionamentos definidos via S
 
 > O diagrama do banco de dados pode ser visualizado abaixo:
 
-![alt text](<Captura de tela de 2026-02-22 22-54-59.png>)
+<!-- [Insira aqui o print do diagrama do banco de dados] -->
+
 ---
 
 ## 💡 Decisões técnicas
@@ -158,8 +159,8 @@ As stacks padrão da empresa são React e Angular, mas optei pelo Next.js pelos 
 
 Página de apresentação com seção de destaque e produtos em evidência.
 
-![alt text](image.png)
-![alt text](image-2.png)
+<!-- ![Página inicial](docs/screenshots/home.png) -->
+
 **Requisições ao back-end (em paralelo via `Promise.all`):**
 - Busca todos os produtos a partir do ID 4
 - Destaca o produto de maior preço
@@ -173,7 +174,7 @@ Página de apresentação com seção de destaque e produtos em evidência.
 
 Grid completo de produtos com suporte a categorias, busca por nome e ordenação por nome ou preço.
 
-![alt text](image-1.png)
+<!-- ![Listagem de produtos](docs/screenshots/produtos.png) -->
 
 **Requisições ao back-end (em paralelo via `Promise.all`):**
 - Busca todos os produtos
@@ -188,15 +189,15 @@ Grid completo de produtos com suporte a categorias, busca por nome e ordenação
 
 Página individual de um produto.
 
-![alt text](image-3.png)
-- Totalmente otimizada para SEO, o google indexa o nome do produto pela URL
+<!-- ![Detalhes do produto](docs/screenshots/produto-detalhe.png) -->
+
 ---
 
 #### `/login` — Login
 
 Formulário de autenticação do usuário.
 
-![alt text](image-4.png)
+<!-- ![Login](docs/screenshots/login.png) -->
 
 - Validação dos campos no front-end antes de enviar ao back-end
 - Token armazenado via cookie `httpOnly` através de uma função `use server`, eliminando vulnerabilidades XSS
@@ -208,7 +209,7 @@ Formulário de autenticação do usuário.
 
 Formulário de criação de conta.
 
-![alt text](image-5.png)
+<!-- ![Registro](docs/screenshots/registro.png) -->
 
 - Validação e tratamento de erros no front-end
 - Token armazenado via `httpOnly` ao registrar com sucesso
@@ -219,7 +220,7 @@ Formulário de criação de conta.
 
 Exibe as informações cadastradas e o histórico de pedidos do usuário.
 
-![alt text](image-6.png)
+<!-- ![Perfil](docs/screenshots/perfil.png) -->
 
 - Renderização pelo servidor (SSR)
 - Cache de 1 hora
@@ -230,7 +231,7 @@ Exibe as informações cadastradas e o histórico de pedidos do usuário.
 
 Exibe todos os itens de um pedido específico, incluindo nome, imagem e valor unitário de cada produto.
 
-![alt text](image-7.png)
+<!-- ![Detalhes do pedido](docs/screenshots/pedido.png) -->
 
 - UUIDs utilizados no lugar de IDs sequenciais para reduzir a previsibilidade e dificultar ataques de enumeração
 - Renderização pelo servidor (SSR)
@@ -241,12 +242,11 @@ Exibe todos os itens de um pedido específico, incluindo nome, imagem e valor un
 
 Exibe todos os itens do carrinho, solicita o endereço de entrega e o meio de pagamento, dividido em etapas.
 
+<!-- ![Checkout - etapa 1](docs/screenshots/checkout-1.png) -->
+<!-- ![Checkout - etapa 2](docs/screenshots/checkout-2.png) -->
+<!-- ![Checkout - etapa 3](docs/screenshots/checkout-3.png) -->
 
-![alt text](image-8.png)
-![alt text](image-9.png)
-![alt text](image-10.png)
-
-- Carrinho salvo via cookie `carrinho_itens` no formato JSON
+- Carrinho persistido via cookie `carrinho_itens` no formato JSON
 - Dados do pedido enviados ao back-end através de uma função `use server`
 - Retorna o `uuid` do pedido criado ao finalizar a compra
 
@@ -269,6 +269,7 @@ Exibe todos os itens do carrinho, solicita o endereço de entrega e o meio de pa
   }
 ]
 ```
+
 ---
 
 ## 🔧 Back-End
@@ -515,6 +516,49 @@ Retorna os dados do usuário autenticado e seus pedidos.
       }
     ]
   }
+}
+```
+
+---
+
+#### `POST /users/orders`
+
+Cria um novo pedido para o usuário autenticado.
+
+> 🔒 Requer autenticação via token JWT no header `Authorization: Bearer {token}`
+
+**Body:**
+
+| Parâmetro | Tipo | Descrição |
+|---|---|---|
+| `endereco` | `string` | Endereço de entrega do cliente |
+| `pagamento` | `string` | Método de pagamento: `pix`, `cartao` ou `boleto` |
+| `produtos` | `array` | Lista de produtos do pedido |
+
+**Estrutura de cada item em `produtos`:**
+
+| Campo | Tipo | Descrição |
+|---|---|---|
+| `id` | `number` | ID do produto |
+| `quantidade` | `number` | Quantidade do produto |
+
+**Comportamento:**
+- Para cada item enviado, o sistema consulta a API de produtos e obtém o preço atual diretamente da fonte — os valores enviados pelo cliente nunca são utilizados
+- O valor total do pedido é calculado internamente com base nos dados reais da API
+- Após validação, o pedido é salvo e um UUID é gerado para identificação
+
+**Exemplo de requisição:**
+
+```json
+POST /users/orders
+
+{
+  "endereco": "Rua Juscelino, 393 — Uberlândia, MG",
+  "pagamento": "pix",
+  "produtos": [
+    { "id": 2, "quantidade": 2 },
+    { "id": 4, "quantidade": 1 }
+  ]
 }
 ```
 
