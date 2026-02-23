@@ -192,6 +192,8 @@ Página individual de um produto.
 
 ![alt text](image-3.png)
 
+Caso o produto nao seja encontrado ele retorna, evitando erros
+![alt text](image-11.png)
 ---
 
 #### `/login` — Login
