@@ -159,7 +159,8 @@ As stacks padrão da empresa são React e Angular, mas optei pelo Next.js pelos 
 
 Página de apresentação com seção de destaque e produtos em evidência.
 
-<!-- ![Página inicial](docs/screenshots/home.png) -->
+![alt text](image.png)
+![alt text](image-2.png)
 
 **Requisições ao back-end (em paralelo via `Promise.all`):**
 - Busca todos os produtos a partir do ID 4
@@ -174,7 +175,7 @@ Página de apresentação com seção de destaque e produtos em evidência.
 
 Grid completo de produtos com suporte a categorias, busca por nome e ordenação por nome ou preço.
 
-<!-- ![Listagem de produtos](docs/screenshots/produtos.png) -->
+![alt text](image-1.png)
 
 **Requisições ao back-end (em paralelo via `Promise.all`):**
 - Busca todos os produtos
@@ -189,7 +190,7 @@ Grid completo de produtos com suporte a categorias, busca por nome e ordenação
 
 Página individual de um produto.
 
-<!-- ![Detalhes do produto](docs/screenshots/produto-detalhe.png) -->
+![alt text](image-3.png)
 
 ---
 
@@ -197,7 +198,7 @@ Página individual de um produto.
 
 Formulário de autenticação do usuário.
 
-<!-- ![Login](docs/screenshots/login.png) -->
+![alt text](image-4.png)
 
 - Validação dos campos no front-end antes de enviar ao back-end
 - Token armazenado via cookie `httpOnly` através de uma função `use server`, eliminando vulnerabilidades XSS
@@ -209,7 +210,7 @@ Formulário de autenticação do usuário.
 
 Formulário de criação de conta.
 
-<!-- ![Registro](docs/screenshots/registro.png) -->
+![alt text](image-5.png)
 
 - Validação e tratamento de erros no front-end
 - Token armazenado via `httpOnly` ao registrar com sucesso
@@ -220,7 +221,7 @@ Formulário de criação de conta.
 
 Exibe as informações cadastradas e o histórico de pedidos do usuário.
 
-<!-- ![Perfil](docs/screenshots/perfil.png) -->
+![alt text](image-6.png)
 
 - Renderização pelo servidor (SSR)
 - Cache de 1 hora
@@ -231,7 +232,7 @@ Exibe as informações cadastradas e o histórico de pedidos do usuário.
 
 Exibe todos os itens de um pedido específico, incluindo nome, imagem e valor unitário de cada produto.
 
-<!-- ![Detalhes do pedido](docs/screenshots/pedido.png) -->
+![alt text](image-7.png)
 
 - UUIDs utilizados no lugar de IDs sequenciais para reduzir a previsibilidade e dificultar ataques de enumeração
 - Renderização pelo servidor (SSR)
@@ -242,9 +243,9 @@ Exibe todos os itens de um pedido específico, incluindo nome, imagem e valor un
 
 Exibe todos os itens do carrinho, solicita o endereço de entrega e o meio de pagamento, dividido em etapas.
 
-<!-- ![Checkout - etapa 1](docs/screenshots/checkout-1.png) -->
-<!-- ![Checkout - etapa 2](docs/screenshots/checkout-2.png) -->
-<!-- ![Checkout - etapa 3](docs/screenshots/checkout-3.png) -->
+![alt text](image-8.png)
+![alt text](image-9.png)
+![alt text](image-10.png)
 
 - Carrinho persistido via cookie `carrinho_itens` no formato JSON
 - Dados do pedido enviados ao back-end através de uma função `use server`
