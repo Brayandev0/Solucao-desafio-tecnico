@@ -22,9 +22,9 @@ export class Produtos {
         throw new Error("Erro ao buscar produtos");
 
       return ProdutosData.data.produtos;
-    } catch (error) {
+    } catch (error: any) {
       console.error("Erro ao buscar produtos:", error);
-      throw error;
+      return error.response.data; 
     }
   }
 
@@ -37,10 +37,11 @@ export class Produtos {
       if (ProdutosData.data.code !== 200)
         throw new Error("Erro ao buscar produtos");
 
-      return ProdutosData.data.produto;
-    } catch (error) {
+      return ProdutosData.data;
+    } catch (error:any) {
       console.error("Erro ao buscar produtos:", error);
-      throw error;
+      return error.response.data; 
+
     }
   }
 
@@ -57,7 +58,8 @@ export class Produtos {
       
     } catch (error) {
       console.error("Erro ao buscar categorias:", error);
-      throw error;
+      return error.response.data; 
+
     }
   }
 static async buscarProdutosPorCategoria(categoria: string): Promise<BackendCategoriaProdutosResponse> {
@@ -72,7 +74,8 @@ static async buscarProdutosPorCategoria(categoria: string): Promise<BackendCateg
       
     } catch (error) {
       console.error("Erro ao buscar produtos da categoria:", error);
-      throw error;
+      return error.response.data; 
+
     }
   }
 

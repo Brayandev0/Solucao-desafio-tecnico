@@ -162,6 +162,9 @@ export async function cadastrarPedidoMiddleware(req,res,next) {
     next();
   } catch (error) {
     console.error("Erro no realizarPedidoCadastroMiddleware:", error);
+    if(error.status === 404){
+      return res.status(404).json({ msg: "Um ou mais produtos não foram encontrados", code: 404 });
+    }
     return res.status(500).json({ msg: "Erro interno no servidor", code: 500 });
   }
   

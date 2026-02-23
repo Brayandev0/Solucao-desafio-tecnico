@@ -55,7 +55,7 @@ export async function cadastrarPedidoController(req, res) {
     res.status(201).json({
       msg: "Seu pedido foi cadastrado com sucesso",
       code: 201,
-      Valor: valorTotal,
+      Valor: valorTotal * 5.50,
       idPedido: orderUuid,
     });
   } catch (error) {

@@ -37,6 +37,12 @@ export async function BuscarProdutosPorIdController(req, res) {
 
   } catch (error) {
     console.error("Erro ao buscar produtos:", error);
+    if(error.response && error.response.status === 404) {
+      return res.status(404).json({
+        msg: "Produto não encontrado",
+        code: 404,
+      });
+    }
     if (error.name === "AbortError") {
       return res.status(504).json({
         msg: "A requisição para buscar produtos excedeu o tempo limite",

@@ -91,6 +91,12 @@ export async function BuscarProdutosPorIdMiddleware(req, res, next) {
     next();
   } catch (error) {
     console.error("Erro ao buscar produto por ID:", error);
+    if (error.response && error.response.status === 404) {
+      return res.status(404).json({
+        msg: "Produto não encontrado",
+        code: 404,
+      });
+    }
     return res.status(500).json({
       msg: "Erro ao buscar produto por ID",
       code: 500,

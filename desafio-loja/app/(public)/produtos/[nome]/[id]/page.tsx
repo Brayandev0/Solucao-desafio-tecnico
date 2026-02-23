@@ -17,7 +17,7 @@ export async function generateMetadata({
   const { nome, id } = await params;
   const produto = await Produtos.buscarProdutoPorId(Number(id));
 
-  if (!produto) {
+  if (!produto || produto.code !== 200) {
     return getMetaData({
       title: "Produto nao encontrado - LOJA",
       description: "O produto que voce procura nao foi encontrado.",
@@ -26,23 +26,23 @@ export async function generateMetadata({
     });
   }
 
-  const slug = gerarSlug(produto.nome);
+  const slug = gerarSlug(produto.produto.nome);
 
   return getMetaData({
-    title: `${produto.nome} - LOJA`,
-    description: produto.descricao,
-    image: produto.thumbnail,
-    url: `/produtos/${slug}/${produto.id}`,
+    title: `${produto.produto.nome} - LOJA`,
+    description: produto.produto.descricao,
+    image: produto.produto.thumbnail,
+    url: `/produtos/${slug}/${produto.produto.id}`,
   });
 }
 
 export default async function ProdutoPage({ params }: ProdutoPageProps) {
   const { id } = await params;
   const produto = await Produtos.buscarProdutoPorId(Number(id));
-
-  if (!produto) {
+  console.log("Produto encontrado:", produto);
+  if (!produto || produto.code !== 200) {
     notFound();
   }
 
-  return <ProdutoIdPage produto={produto} />;
+  return <ProdutoIdPage produto={produto.produto} />;
 }
