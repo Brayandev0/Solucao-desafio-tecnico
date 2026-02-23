@@ -174,7 +174,7 @@ Grid completo de produtos com suporte a categorias, busca por nome e ordenação
 Página individual de um produto.
 
 ![alt text](image-3.png)
-
+- Totalmente otimizada para SEO, o google indexa o nome do produto pela URL
 ---
 
 #### `/login` — Login
